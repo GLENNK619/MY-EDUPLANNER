@@ -3,8 +3,8 @@ import { Sparkles, Moon, Sun, Calendar, BookOpen, AlertCircle, Clock, BarChart3,
 import { PRESETS } from '../utils/presets';
 
 interface HeaderProps {
-  activeTab: 'timetable' | 'subjects' | 'exams' | 'goals' | 'availability' | 'analytics';
-  setActiveTab: (tab: 'timetable' | 'subjects' | 'exams' | 'goals' | 'availability' | 'analytics') => void;
+  activeTab: 'timetable' | 'subjects' | 'exams' | 'goals' | 'availability' | 'analytics' | 'focus';
+  setActiveTab: (tab: 'timetable' | 'subjects' | 'exams' | 'goals' | 'availability' | 'analytics' | 'focus') => void;
   onOpenSettings: () => void;
   onExportICS: () => void;
   onSelectPreset: (presetId: string) => void;
@@ -81,6 +81,19 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Calendar className="w-4 h-4" />
               <span>Timetable</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('focus')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg whitespace-nowrap transition-colors relative ${
+                activeTab === 'focus'
+                  ? 'bg-slate-900 text-white dark:bg-indigo-600 dark:text-white'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              <Clock className="w-4 h-4 text-indigo-500" />
+              <span>Focus Mode</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse hidden sm:inline-block" />
             </button>
 
             <button
